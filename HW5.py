@@ -27,6 +27,7 @@ print (intSumList)
 #8. Move the number back to the first list (like you did in #4 and #5 but reversed).
 secondList.pop(1)
 secondList.pop(0)
+intList.append(intSumList)
 #9. Sort the first list from lowest to highest and print it.
 intList.sort()
 print (intList)
