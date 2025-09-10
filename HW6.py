@@ -31,6 +31,7 @@ nameList = ["Mardi", "Hogan","Waylon", "Ivan", "Dylan"]
 print (nameList)
 #11. Shuffle the list in #10 and print the list again.
 random.shuffle(nameList)
+
 print (nameList)
 #12. Print a random choice from the list of names from #10.
 print (random.choice(nameList))
