@@ -22,6 +22,7 @@ Height= int(input("What is your height in meters?: "))
 #now ask for patients weight
 Weight= int(input("Imput your weight in kg: "))
 bmi = Weight/(Height**2)
+print (bmi)
 
 if bmi < 18.5:
     print("You are underweight.")
