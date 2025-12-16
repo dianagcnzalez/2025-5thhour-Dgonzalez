@@ -94,33 +94,67 @@ if hero >= enemy:
 else:
     print("Goblin goes first")
     heroFirst = False
-if heroFirst == True:
-    print ("Gale goes first")
-else:
-    print ("Goblin goes first")
+
 #2. Rolling to attack. This is determined by rolling a 20-sided die (d20) and adding their
 #attack modifier. The attack hits if it matches or is higher than the target's Armor Class (AC).
 #If the d20 rolled to attack is an unmodified ("natural") 20, the attack automatically hits and
 #the character deals double damage. If the d20 rolled to attack is an unmodified ("natural") 1,
 #the attack automatically misses
-heroRollattack = random.randint(1,20)
-print (heroRollattack)
-if heroRollattack == 20:
-    enemyDict["Goblin"]["HP"] -= (partyDict["Gale"]["Damage"]+2)
-    print (f" Gale hits Goblin for {(partyDict["Gale"]["Damage"]*2)}")
-elif heroRollattack == 1:
-    print ("Gale misses Goblin")
-elif heroRollattack + partyDict["Goblin"]["AtkMod"] >= enemyDict["Goblin"]["AC"]:
-    enemyDict["Goblin"]["HP"] -= (partyDict["Gale"]["Damage"])
-    print (f"Gale hits Goblin for {(partyDict["Gale"]["Damage"])}")
-else:
-    print ("Gale misses the attack")
+while partyDict["Gale"]["HP"] > 0 and enemyDict["Goblin"]["HP"] > 0:
+    if heroFirst == True:
+        print ("Gale goes first")
+        heroRollattack = random.randint(1, 20)
+        print (heroRollattack)
+        if heroRollattack == 20:
+            enemyDict["Goblin"]["HP"] -= (partyDict["Gale"]["Damage"]+2)
+            print (f" Gale hits Goblin for {(partyDict["Gale"]["Damage"]*2)}")
+        elif heroRollattack == 1:
+            print ("Gale misses Goblin")
+        elif heroRollattack + partyDict["Gale"]["AtkMod"] >= enemyDict["Goblin"]["AC"]:
+            enemyDict["Goblin"]["HP"] -= (partyDict["Gale"]["Damage"])
+            print (f"Gale hits Goblin for {(partyDict["Gale"]["Damage"])}")
+        else:
+            print ("Gale misses the attack")
 
+        enemyRollattack = random.randint(1,20)
+        print (enemyRollattack)
+        if enemyRollattack == 20:
+            partyDict["Gale"]["HP"] -= (enemyDict["Goblin"]["Damage"]+2)
+            print (f" Goblin hits Gale for {(enemyDict["Goblin"]["Damage"]*2)}")
+        elif enemyRollattack == 1:
+            print ("Goblin misses Gale")
+        elif enemyRollattack + enemyDict["Goblin"]["AtkMod"] >= partyDict["Gale"]["AC"]:
+            partyDict["Gale"]["HP"] -= (partyDict["Gale"]["Damage"])
+            print (f"Gale hits Goblin for {(enemyDict["Goblin"]["Damage"])}")
+        else:
+            print ("Goblin misses the attack")
 
-
-
-enemyRollattack = random.randint(1,20) +(enemyDict["Goblin"]["AtkMod"])
-print (enemyRollattack)
+    else:
+        print ("Goblin goes first")
+        enemyRollattack = random.randint(1, 20)
+        print(enemyRollattack)
+        if enemyRollattack == 20:
+            partyDict["Gale"]["HP"] -= (enemyDict["Goblin"]["Damage"] + 2)
+            print(f" Goblin hits Gale for {(partyDict["Goblin"]["Damage"] * 2)}")
+        elif enemyRollattack == 1:
+            print("Goblin misses Gale")
+        elif enemyRollattack + enemyDict["Goblin"]["AtkMod"] >= partyDict["Gale"]["AC"]:
+            partyDict["Gale"]["HP"] -= (partyDict["Gale"]["Damage"])
+            print(f"Gale hits Goblin for {(enemyDict["Goblin"]["Damage"])}")
+        else:
+            print("Goblin misses the attack")
+        heroRollattack = random.randint(1, 20)
+        print(heroRollattack)
+        if heroRollattack == 20:
+            enemyDict["Goblin"]["HP"] -= (partyDict["Gale"]["Damage"] + 2)
+            print(f" Gale hits Goblin for {(partyDict["Gale"]["Damage"] * 2)}")
+        elif heroRollattack == 1:
+            print("Gale misses Goblin")
+        elif heroRollattack + partyDict["Gale"]["AtkMod"] >= enemyDict["Goblin"]["AC"]:
+            enemyDict["Goblin"]["HP"] -= (partyDict["Gale"]["Damage"])
+            print(f"Gale hits Goblin for {(partyDict["Gale"]["Damage"])}")
+        else:
+            print("Gale misses the attack")
 
 #3. If the attack hits, roll damage and subtract it from the target's hit points.
 
